@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="645.0" prefWidth="506.0" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="controller.MainController">
+<VBox prefHeight="645.0" prefWidth="506.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -67,7 +67,12 @@
             <TextField fx:id="parkNameTf" prefHeight="26.0" prefWidth="345.0" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onClickListPark" prefHeight="26.0" prefWidth="469.0" text="Bäume des Parks auflisten" />
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAddPark" prefHeight="26.0" prefWidth="253.0" text="Neuen Park hinzufügen" />
+            <Button mnemonicParsing="false" onAction="#onClickListPark" prefHeight="26.0" prefWidth="293.0" text="Bäume des Parks auflisten" />
+         </children>
+      </HBox>
       <TableView fx:id="parkTableView" prefHeight="281.0" prefWidth="466.0">
         <columns>
           <TableColumn prefWidth="78.20000839233398" text="ID" />

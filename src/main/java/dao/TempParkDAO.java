@@ -16,18 +16,14 @@ public class TempParkDAO implements ParkDAO{
 
     /**
      * Fügt einen Baum einem Park hinzu. Falls der Park noch nicht vorhanden ist,
-     * wird dieser zuvor erzeugt
-     * @param parkId
-     * @param tree
+     * oder das Speichern anderweitig nicht möglich war, wird false zurückgegeben
+     * @param parkId Id des Parks
+     * @param tree Baum
      */
     @Override
-    public void addTreeToPark(int parkId, Tree tree) {
+    public boolean addTreeToPark(int parkId, Tree tree){
 
-
-
-
-
-
+         return false;
     }
 
 

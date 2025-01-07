@@ -36,10 +36,18 @@ public class MainController {
 
 
     /**
-     * Wird aufgerufen wenn der Button "Baum hinzufügen" gedrückt wird
+     * Wird aufgerufen, wenn der Button "Baum hinzufügen" gedrückt wird
      */
     @FXML
     protected void onClickTreeAdd(){
+
+    }
+
+    /**
+     * Wird aufgerufen, wenn der Button "Neuen Park hinzufügen" gedrückt wird
+     */
+    @FXML
+    protected void onClickParkAdd(){
 
     }
 

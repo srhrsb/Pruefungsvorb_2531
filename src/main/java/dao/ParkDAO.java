@@ -8,7 +8,7 @@ public interface ParkDAO {
 
    ArrayList<Tree> getAllTreesByParkId();
 
-   void addTreeToPark( int parkId, Tree tree);
+   boolean addTreeToPark( int parkId, Tree tree);
 
 
 

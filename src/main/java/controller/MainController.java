@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 
 public class MainController {
 
+    //Tree UI----------------------------------------------
     @FXML
     private TextField treeIdTf;
 
@@ -20,12 +21,15 @@ public class MainController {
     @FXML
     private CheckBox treeSickCheckbox;
 
-    //Park Attribute
+    //UI Park ----------------------------------------
     @FXML
     private TextField parkIdTf;
 
     @FXML
     private TextField parkNameTf;
+
+    @FXML
+    private TextField parkIdListTf;
 
     @FXML
     private TableView parkTableView;

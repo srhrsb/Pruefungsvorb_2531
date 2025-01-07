@@ -9,10 +9,17 @@ public class TempParkDAO implements ParkDAO{
 
     private ArrayList<Park> parkList;
 
+    /**
+     * Fügt einen neuen Park hinzu
+     * @param id Park ID
+     * @param name Park Name
+     * @return Erfolg
+     */
     @Override
-    public ArrayList<Tree> getAllTreesByParkId() {
-        return null;
+    public boolean addPark(int id, String name) {
+        return false;
     }
+
 
     /**
      * Fügt einen Baum einem Park hinzu. Falls der Park noch nicht vorhanden ist,
@@ -24,6 +31,12 @@ public class TempParkDAO implements ParkDAO{
     public boolean addTreeToPark(int parkId, Tree tree){
 
          return false;
+    }
+
+
+    @Override
+    public ArrayList<Tree> getAllTreesByParkId() {
+        return null;
     }
 
 

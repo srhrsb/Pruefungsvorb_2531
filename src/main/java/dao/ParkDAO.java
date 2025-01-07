@@ -8,6 +8,8 @@ public interface ParkDAO {
 
    ArrayList<Tree> getAllTreesByParkId();
 
+   boolean addPark( int id , String name);
+
    boolean addTreeToPark( int parkId, Tree tree);
 
 

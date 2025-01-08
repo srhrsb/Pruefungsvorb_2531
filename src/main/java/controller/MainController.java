@@ -1,5 +1,7 @@
 package controller;
 
+import dao.ParkDAO;
+import dao.TempParkDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -34,6 +36,13 @@ public class MainController {
     @FXML
     private TableView parkTableView;
 
+    private ParkDAO database;
+
+
+    @FXML
+    private void initialize(){
+        database = new TempParkDAO();
+    }
 
     /**
      * Wird aufgerufen, wenn der Button "Baum hinzufügen" gedrückt wird
@@ -49,6 +58,14 @@ public class MainController {
     @FXML
     protected void onClickAddPark(){
 
+        int parkId = Integer.parseInt( parkIdListTf.getText() );
+        //ToDo: ExceptionHandling
+
+        String parkName =  parkNameTf.getText();
+        boolean success = database.addPark(parkId, parkName);
+        System.out.println("Park der Liste hinzugefügt: "+success);
+
+        //ToDo: Meldungen an den Nutzer ausgeben
     }
 
     /**

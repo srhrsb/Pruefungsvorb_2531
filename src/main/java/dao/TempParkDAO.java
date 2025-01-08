@@ -10,6 +10,10 @@ public class TempParkDAO implements ParkDAO{
     private final int PARK_MIN_LENGTH = 6;
     private ArrayList<Park> parkList;
 
+    public TempParkDAO(){
+        parkList = new ArrayList<>();
+    }
+
     /**
      * Fügt einen neuen Park hinzu
      * @param id Park ID
@@ -17,9 +21,9 @@ public class TempParkDAO implements ParkDAO{
      * @return Erfolg
      */
     @Override
-    public boolean addPark(int id, String name) {
+    public boolean addPark( int id, String name ) {
 
-        if(id <= 0 || name.length() < PARK_MIN_LENGTH) return false;
+        if(id <= 0 || !isParkUnique(id) || name.length() < PARK_MIN_LENGTH) return false;
 
         Park park = new Park( id, new ArrayList<Tree>(), name);
         return parkList.add( park );
@@ -47,21 +51,40 @@ public class TempParkDAO implements ParkDAO{
      * oder das Speichern anderweitig nicht möglich war, wird false zurückgegeben
      * @param parkId Id des Parks
      * @param tree Baum
+     * @return Erfolg
      */
     @Override
     public boolean addTreeToPark(int parkId, Tree tree){
 
-         return false;
+        if( tree == null ) {
+            System.err.println("the given instance of tree cannot be null");
+            return false;
+        }
+
+        for( var park : parkList){
+            if( parkId == park.getParkId() ){
+               return park.getTreeList().add(tree);
+            }
+        }
+
+        return false;
     }
 
-
+    /**
+     * Gibt eine Liste aller Bäume eines Parks zurück
+     * @return
+     */
     @Override
-    public ArrayList<Tree> getAllTreesByParkId() {
+    public ArrayList<Tree> getAllTreesByParkId( int parkId ) {
+
+        for( var park : parkList){
+            if( parkId == park.getParkId() ){
+                return park.getTreeList();
+            }
+        }
+
         return null;
     }
-
-
-
 
 
 

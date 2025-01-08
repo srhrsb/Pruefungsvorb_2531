@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ParkDAO {
 
-   ArrayList<Tree> getAllTreesByParkId();
+   ArrayList<Tree> getAllTreesByParkId( int parkId );
 
    boolean addPark( int id , String name);
 

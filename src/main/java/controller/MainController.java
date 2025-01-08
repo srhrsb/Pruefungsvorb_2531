@@ -47,7 +47,7 @@ public class MainController {
      * Wird aufgerufen, wenn der Button "Neuen Park hinzufügen" gedrückt wird
      */
     @FXML
-    protected void onClickParkAdd(){
+    protected void onClickAddPark(){
 
     }
 

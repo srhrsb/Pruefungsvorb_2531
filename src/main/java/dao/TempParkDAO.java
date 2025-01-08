@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class TempParkDAO implements ParkDAO{
 
+    private final int PARK_MIN_LENGTH = 6;
     private ArrayList<Park> parkList;
 
     /**
@@ -17,8 +18,28 @@ public class TempParkDAO implements ParkDAO{
      */
     @Override
     public boolean addPark(int id, String name) {
-        return false;
+
+        if(id <= 0 || name.length() < PARK_MIN_LENGTH) return false;
+
+        Park park = new Park( id, new ArrayList<Tree>(), name);
+        return parkList.add( park );
     }
+
+    /**
+     * Prüft, ob die gegebene parkId noch nicht vergeben ist
+     * @param id ParkID
+     * @return true falls unique
+     */
+    private boolean isParkUnique( int id ){
+        for( var park : parkList){
+            if(id == park.getParkId()){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 
     /**

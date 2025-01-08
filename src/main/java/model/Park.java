@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Park {
     private int parkId;
-    private ArrayList<Integer> treeIds;
+    private ArrayList<Tree> treeList;
     private String name;
 
-    public Park(int parkId, ArrayList<Integer> treeIds, String name)
+    public Park(int parkId, ArrayList<Tree> treeList, String name)
     {
         this.parkId = parkId;
-        this.treeIds = treeIds;
+        this.treeList = treeList;
         this.name = name;
     }
 
@@ -30,11 +30,11 @@ public class Park {
         this.name = name;
     }
 
-    public ArrayList<Integer> getTreeIds(){
-        return this.treeIds;
+    public ArrayList<Tree> getTreeList(){
+        return this.treeList;
     }
 
-    public void setTreeIds( ArrayList<Integer> treeIds ){
-        this.treeIds = treeIds;
+    public void setTreeIds( ArrayList<Tree> treeList ){
+        this.treeList = treeList;
     }
 }

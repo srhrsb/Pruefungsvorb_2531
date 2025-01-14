@@ -12,6 +12,8 @@ public interface ParkDAO {
 
    boolean addTreeToPark( int parkId, Tree tree);
 
+   boolean removeParkById( int parkId );
+
 
 
 }

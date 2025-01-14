@@ -1,0 +1,189 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "controller.MainController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_104069929 { 
+   	label=model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Park104069929[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Park</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeList: ArrayList&lt;Tree&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Tree104069929[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Tree</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   age: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sick: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeFamily: TreeFamily [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeId: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_637428636 { 
+   	label=controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   MainController637428636[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MainController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   database: ParkDAO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkIdListTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkIdTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkNameTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkTableView: TableView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeAgeTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeFamilyCombo: ComboBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeIdTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeNameTf: TextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   treeSickCheckbox: CheckBox [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- initialize()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onClickAddPark()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onClickListPark()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onClickTreeAdd()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_99218 { 
+   	label=dao
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   TempParkDAO99218[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TempParkDAO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   PARK_MIN_LENGTH: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkList: ArrayList&lt;Park&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addPark(id: int, name: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTreeToPark(parkId: int, tree: Tree): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllTreesByParkId(parkId: int): ArrayList&lt;Tree&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- isParkUnique(id: int): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+MainController637428636 -> TempParkDAO99218[arrowhead=none];
+Park104069929 -> Tree104069929[label="treeList
+[0..*]"];
+TempParkDAO99218 -> Park104069929[label="parkList
+[0..*]"];
+    
+}
+@enduml

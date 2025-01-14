@@ -58,8 +58,15 @@ public class MainController {
     @FXML
     protected void onClickAddPark(){
 
-        int parkId = Integer.parseInt( parkIdListTf.getText() );
-        //ToDo: ExceptionHandling
+        int parkId = 0;
+        try{
+            parkId = Integer.parseInt( parkIdListTf.getText() );
+            if(parkId <= 0)
+                throw new NumberFormatException();
+        }
+        catch( NumberFormatException e){
+            System.err.println("Error: " + e.getMessage() );
+        }
 
         String parkName =  parkNameTf.getText();
         boolean success = database.addPark(parkId, parkName);

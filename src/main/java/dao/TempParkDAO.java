@@ -71,6 +71,18 @@ public class TempParkDAO implements ParkDAO{
     }
 
     /**
+     * Löscht den Park mit der gegeben ID
+     * @param parkId Id des Parks
+     * @return Erfolg
+     */
+    @Override
+    public boolean removeParkById(int parkId) {
+
+
+        return false;
+    }
+
+    /**
      * Gibt eine Liste aller Bäume eines Parks zurück
      * @return
      */

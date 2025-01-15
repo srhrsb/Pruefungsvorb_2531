@@ -103,7 +103,6 @@ public class MainController {
                 popUp.showErrorWindow("Der Park konnte nicht gefunden werden, möglicherweise wurde er bereits gelöscht.");
             }
         }
-
     }
 
     private int getCurrentParkId(){

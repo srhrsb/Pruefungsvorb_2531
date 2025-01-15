@@ -78,7 +78,11 @@ public class TempParkDAO implements ParkDAO{
     @Override
     public boolean removeParkById(int parkId) {
 
-
+        for( var park : parkList){
+            if( parkId == park.getParkId() ){
+                return parkList.remove(park);
+            }
+        }
         return false;
     }
 

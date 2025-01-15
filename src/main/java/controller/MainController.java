@@ -4,6 +4,7 @@ import dao.ParkDAO;
 import dao.TempParkDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import view.PopUpView;
 
 public class MainController {
 
@@ -37,11 +38,15 @@ public class MainController {
     private TableView parkTableView;
 
     private ParkDAO database;
-
+    private PopUpView popUp;
 
     @FXML
     private void initialize(){
+
         database = new TempParkDAO();
+        popUp = new PopUpView();
+
+
     }
 
     /**
@@ -72,7 +77,12 @@ public class MainController {
         boolean success = database.addPark(parkId, parkName);
         System.out.println("Park der Liste hinzugefügt: "+success);
 
-        //ToDo: Meldungen an den Nutzer ausgeben
+        if(success){
+            popUp.showInfoWindow("Ein Park wurde hinzugefügt.\nName: "+parkName+"\n Id: "+parkId);
+        }
+        else{
+            //ToDo: Fehler an den Nutzer ausgeben
+        }
     }
 
     /**

@@ -30,7 +30,6 @@ public class PopUpView {
         alert.setHeaderText(null);
         alert.setContentText(message);
 
-
         Optional<ButtonType> result = alert.showAndWait();
         return result.get() == ButtonType.OK;
     }

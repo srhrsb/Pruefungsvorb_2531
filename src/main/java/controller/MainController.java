@@ -63,15 +63,7 @@ public class MainController {
     @FXML
     protected void onClickAddPark(){
 
-        int parkId = 0;
-        try{
-            parkId = Integer.parseInt( parkIdListTf.getText() );
-            if(parkId <= 0)
-                throw new NumberFormatException();
-        }
-        catch( NumberFormatException e){
-            System.err.println("Error: " + e.getMessage() );
-        }
+        int parkId = getCurrentParkId();
 
         String parkName =  parkNameTf.getText();
         boolean success = database.addPark(parkId, parkName);
@@ -99,15 +91,7 @@ public class MainController {
     @FXML
     protected void onClickRemovePark(){
 
-        int parkId = 0;
-        try{
-            parkId = Integer.parseInt( parkIdListTf.getText() );
-            if(parkId <= 0)
-                throw new NumberFormatException();
-        }
-        catch( NumberFormatException e){
-            System.err.println("Error: " + e.getMessage() );
-        }
+        int parkId = getCurrentParkId();
 
         if(popUp.showConfirmWindow("Soll der Park wirklich gelöscht werden")) {
             boolean success = database.removeParkById( parkId );
@@ -120,5 +104,19 @@ public class MainController {
             }
         }
 
+    }
+
+    private int getCurrentParkId(){
+
+        int parkId = 0;
+        try{
+            parkId = Integer.parseInt( parkIdListTf.getText() );
+            if(parkId <= 0)
+                throw new NumberFormatException();
+        }
+        catch( NumberFormatException e){
+            System.err.println("Error: " + e.getMessage() );
+        }
+        return parkId;
     }
 }

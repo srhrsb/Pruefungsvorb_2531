@@ -81,7 +81,7 @@ public class MainController {
             popUp.showInfoWindow("Ein Park wurde hinzugefügt.\nName: "+parkName+"\n Id: "+parkId);
         }
         else{
-            //ToDo: Fehler an den Nutzer ausgeben
+           popUp.showErrorWindow("Der Park konnte nicht hinzugefügt. Möglicherweise die ID bereits verwendet. ");
         }
     }
 

@@ -71,6 +71,7 @@
          <children>
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAddPark" prefHeight="26.0" prefWidth="253.0" text="Neuen Park hinzufügen" />
             <Button mnemonicParsing="false" onAction="#onClickListPark" prefHeight="26.0" prefWidth="293.0" text="Bäume des Parks auflisten" />
+            <Button layoutX="228.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickRemovePark" prefHeight="26.0" prefWidth="293.0" style="-fx-background-color: red;" text="Park löschen" />
          </children>
       </HBox>
       <TableView fx:id="parkTableView" prefHeight="281.0" prefWidth="466.0">

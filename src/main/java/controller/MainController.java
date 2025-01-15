@@ -93,10 +93,32 @@ public class MainController {
 
     }
 
+    /**
+     * Wird aufgerufen wenn der Button "Park löschen" gedrückt wird
+     */
+    @FXML
+    protected void onClickRemovePark(){
 
+        int parkId = 0;
+        try{
+            parkId = Integer.parseInt( parkIdListTf.getText() );
+            if(parkId <= 0)
+                throw new NumberFormatException();
+        }
+        catch( NumberFormatException e){
+            System.err.println("Error: " + e.getMessage() );
+        }
 
+        if(popUp.showConfirmWindow("Soll der Park wirklich gelöscht werden")) {
+            boolean success = database.removeParkById( parkId );
 
+            if(success){
+                popUp.showInfoWindow("Der Park mit der ID: " +parkId+ "gelöscht");
+            }
+            else{
+                popUp.showErrorWindow("Der Park konnte nicht gefunden werden, möglicherweise wurde er bereits gelöscht.");
+            }
+        }
 
-
-
+    }
 }

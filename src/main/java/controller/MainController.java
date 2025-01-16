@@ -4,6 +4,8 @@ import dao.ParkDAO;
 import dao.TempParkDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import model.Tree;
+import model.TreeFamily;
 import view.PopUpView;
 
 public class MainController {
@@ -55,6 +57,46 @@ public class MainController {
     @FXML
     protected void onClickTreeAdd(){
 
+        //Daten besorgen
+        //Darauf achten: Exception Handling
+        //Objekt erzeugen und hinzufügen
+
+        int parkId = 0;
+        int treeId = 0;
+        int treeAge = 0;
+        try{
+            parkId = Integer.parseInt( parkIdTf.getText() );
+            if(parkId <= 0)
+                throw new NumberFormatException();
+
+            treeId = Integer.parseInt( treeIdTf.getText() );
+            if(treeId <= 0)
+                throw new NumberFormatException();
+
+            treeAge = Integer.parseInt( treeAgeTf.getText() );
+            if(treeAge < 0)
+                throw new NumberFormatException();
+        }
+        catch( NumberFormatException e){
+            System.err.println("Error: " + e.getMessage() );
+        }
+
+        String name = treeNameTf.getText();
+        boolean sick = treeSickCheckbox.isSelected();
+
+        //ToDo: Daten von Checkbox holen
+        TreeFamily family = TreeFamily.CONIFER;
+
+        Tree tree = new Tree(parkId,  name, treeAge, sick, family );
+        boolean sucess = database.addTreeToPark( parkId, tree );
+
+        if(sucess){
+            popUp.showInfoWindow("Ein Baum wurde hinzugefügt.\nName: "+name+"\nId: "+treeId+"\n Park Id: "+parkId);
+        }
+        else{
+            popUp.showErrorWindow("Der Baum konnte nicht hinzugefügt. " +
+                    "Möglicherweise wird die ID bereits verwendet oder der Park existiert nicht.");
+        }
     }
 
     /**
@@ -73,7 +115,8 @@ public class MainController {
             popUp.showInfoWindow("Ein Park wurde hinzugefügt.\nName: "+parkName+"\n Id: "+parkId);
         }
         else{
-           popUp.showErrorWindow("Der Park konnte nicht hinzugefügt. Möglicherweise die ID bereits verwendet. ");
+           popUp.showErrorWindow("Der Park konnte nicht hinzugefügt. " +
+                   "Möglicherweise die ID bereits verwendet. ");
         }
     }
 
@@ -100,7 +143,8 @@ public class MainController {
                 popUp.showInfoWindow("Der Park mit der ID: " +parkId+ "gelöscht");
             }
             else{
-                popUp.showErrorWindow("Der Park konnte nicht gefunden werden, möglicherweise wurde er bereits gelöscht.");
+                popUp.showErrorWindow("Der Park konnte nicht gefunden werden, " +
+                        "möglicherweise wurde er bereits gelöscht.");
             }
         }
     }

@@ -87,8 +87,7 @@ public class MainController {
         //ToDo: Daten von Checkbox holen
         TreeFamily family = TreeFamily.CONIFER;
 
-        Tree tree = new Tree(parkId,  name, treeAge, sick, family );
-        boolean sucess = database.addTreeToPark( parkId, tree );
+        boolean sucess = database.addTreeToPark( parkId, treeId, name, treeAge, sick, family );
 
         if(sucess){
             popUp.showInfoWindow("Ein Baum wurde hinzugefügt.\nName: "+name+"\nId: "+treeId+"\n Park Id: "+parkId);

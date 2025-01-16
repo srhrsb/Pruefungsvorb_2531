@@ -2,6 +2,7 @@ package dao;
 
 import model.Park;
 import model.Tree;
+import model.TreeFamily;
 
 import java.util.ArrayList;
 
@@ -44,26 +45,43 @@ public class TempParkDAO implements ParkDAO{
         return true;
     }
 
+    /**
+     * Prüft, ob die gegebene parkId noch nicht vergeben ist
+     * @param treeId TreeID
+     * @param parkId TreeID
+     * @return true falls unique
+     */
+    private boolean isTreeUnique( int parkId, int treeId ){
+
+
+
+
+
+
+        return true;
+    }
+
 
 
     /**
      * Fügt einen Baum einem Park hinzu. Falls der Park noch nicht vorhanden ist,
      * oder das Speichern anderweitig nicht möglich war, wird false zurückgegeben
      * @param parkId Id des Parks
-     * @param tree Baum
+     * @param treeId Baum
      * @return Erfolg
      */
     @Override
-    public boolean addTreeToPark(int parkId, Tree tree){
-
-        if( tree == null ) {
-            System.err.println("the given instance of tree cannot be null");
-            return false;
-        }
+    public boolean addTreeToPark(int parkId, int treeId, String name, int treeAge, boolean sick, TreeFamily family){
 
         for( var park : parkList){
             if( parkId == park.getParkId() ){
-               return park.getTreeList().add(tree);
+
+                //Checken ob es TreeId in diesem Park schon gibt
+                //über eine Hilfsmethode
+
+
+                Tree tree = new Tree(treeId, name, treeAge, sick, family);
+                return park.getTreeList().add(tree);
             }
         }
 

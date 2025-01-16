@@ -1,5 +1,6 @@
 package dao;
 
+import javafx.collections.ObservableList;
 import model.Tree;
 import model.TreeFamily;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 
 public interface ParkDAO {
 
-   ArrayList<Tree> getAllTreesByParkId( int parkId );
+   ObservableList<Tree> getAllTreesByParkId(int parkId );
 
    boolean addPark( int id , String name);
 

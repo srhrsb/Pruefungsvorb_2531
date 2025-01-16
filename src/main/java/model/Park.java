@@ -1,13 +1,15 @@
 package model;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class Park {
     private int parkId;
-    private ArrayList<Tree> treeList;
+    private ObservableList<Tree> treeList;
     private String name;
 
-    public Park(int parkId, ArrayList<Tree> treeList, String name)
+    public Park(int parkId, ObservableList<Tree> treeList, String name)
     {
         this.parkId = parkId;
         this.treeList = treeList;
@@ -30,11 +32,11 @@ public class Park {
         this.name = name;
     }
 
-    public ArrayList<Tree> getTreeList(){
+    public ObservableList<Tree> getTreeList(){
         return this.treeList;
     }
 
-    public void setTreeIds( ArrayList<Tree> treeList ){
+    public void setTreeIds( ObservableList<Tree> treeList ){
         this.treeList = treeList;
     }
 }

@@ -53,15 +53,18 @@ public class TempParkDAO implements ParkDAO{
      */
     private boolean isTreeUnique( int parkId, int treeId ){
 
-
-
-
-
+        for( var park : parkList){
+            if( parkId == park.getParkId() ){ //Park gefunden
+                 for( Tree tree : park.getTreeList() ){
+                     if(tree.getTreeId() == treeId ){ //Baum in diesem Park gefunden
+                         return false;
+                     }
+                 }
+            }
+        }
 
         return true;
     }
-
-
 
     /**
      * Fügt einen Baum einem Park hinzu. Falls der Park noch nicht vorhanden ist,

@@ -16,4 +16,6 @@ public interface ParkDAO {
 
    boolean removeParkById( int parkId );
 
+   boolean deleteTreeByIndex( int parkId, int index );
+
 }

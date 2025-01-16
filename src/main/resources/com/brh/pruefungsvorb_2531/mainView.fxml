@@ -83,5 +83,6 @@
             <TableColumn fx:id="tableColFamily" prefWidth="122.39996337890625" text="Familie" />
         </columns>
       </TableView>
+      <Button mnemonicParsing="false" onAction="#onClickDeleteTree" onMouseReleased="#onClickTableRow" text="Ausgewählten Baum Löschen" />
    </children>
 </VBox>

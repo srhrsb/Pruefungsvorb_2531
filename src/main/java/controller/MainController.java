@@ -3,6 +3,7 @@ package controller;
 import dao.ParkDAO;
 import dao.TempParkDAO;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -155,10 +156,6 @@ public class MainController {
         updateTableView(treeList);
     }
 
-    private void updateTableView( ObservableList<Tree> treeList ){
-        parkTableView.setItems(treeList);
-        parkTableView.refresh();
-    }
 
 
     /**
@@ -195,4 +192,40 @@ public class MainController {
         }
         return parkId;
     }
+
+    @FXML
+    protected void onClickDeleteTree( ActionEvent event ){
+        System.out.println( event.toString() );
+
+            int index = getSelectedTableRow();
+            int parkId = getCurrentParkId();
+
+           boolean success = database.deleteTreeByIndex(parkId, index);
+
+        if(success){
+            popUp.showInfoWindow("Der Baum wurde gelöscht");
+            ObservableList treeList = database.getAllTreesByParkId(parkId);
+            updateTableView(treeList);
+        }
+        else{
+            popUp.showErrorWindow("Der Baum konnte nicht gelöscht werden.");
+        }
+    }
+
+    @FXML
+    protected void onClickTableRow( ActionEvent event ) {
+
+    }
+
+
+    //Helper
+    private int getSelectedTableRow(){
+       return parkTableView.getFocusModel().getFocusedIndex();
+    }
+
+    private void updateTableView( ObservableList<Tree> treeList ){
+        parkTableView.setItems(treeList);
+        parkTableView.refresh();
+    }
+
 }

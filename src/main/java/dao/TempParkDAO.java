@@ -124,7 +124,20 @@ public class TempParkDAO implements ParkDAO{
         return null;
     }
 
+    /**
+     * Löscht den Baum mit dem gegebenen Index im Park mit der gegebenen ParkID
+     * @param parkId ParkId
+     * @param index BaumIndex
+     * @return Erfolg
+     */
+    public boolean deleteTreeByIndex( int parkId, int index ){
 
-
-
+        for( var park : parkList){
+            if( parkId == park.getParkId() ){ //Park gefunden
+                 Tree removedTree = park.getTreeList().remove(index);
+                 return removedTree != null;
+            }
+        }
+        return false;
+    }
 }

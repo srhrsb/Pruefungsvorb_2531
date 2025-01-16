@@ -76,11 +76,11 @@
       </HBox>
       <TableView fx:id="parkTableView" prefHeight="281.0" prefWidth="466.0">
         <columns>
-          <TableColumn prefWidth="78.20000839233398" text="ID" />
-          <TableColumn prefWidth="72.20001220703125" text="Name" />
-            <TableColumn prefWidth="96.20002746582031" text="Alter" />
-            <TableColumn prefWidth="54.20001220703125" text="Ist krank" />
-            <TableColumn prefWidth="122.39996337890625" text="Familie" />
+            <TableColumn fx:id="tableColId" prefWidth="78.20000839233398" text="ID" />
+            <TableColumn fx:id="tableColName" prefWidth="72.20001220703125" text="Name" />
+            <TableColumn fx:id="tableColAge" prefWidth="96.20002746582031" text="Alter" />
+            <TableColumn fx:id="tableColSick" prefWidth="54.20001220703125" text="Ist krank" />
+            <TableColumn fx:id="tableColFamily" prefWidth="122.39996337890625" text="Familie" />
         </columns>
       </TableView>
    </children>

@@ -4,6 +4,7 @@ import dao.ParkDAO;
 import dao.TempParkDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Tree;
 import model.TreeFamily;
 import view.PopUpView;
@@ -36,8 +37,20 @@ public class MainController {
     @FXML
     private TextField parkIdListTf;
 
+    //TableView & Columns------------------------------------------
     @FXML
     private TableView parkTableView;
+
+    @FXML
+    private TableColumn<Tree, Integer> tableColId;
+    @FXML
+    private TableColumn<Tree, String> tableColName;
+    @FXML
+    private TableColumn<Tree, Integer> tableColAge;
+    @FXML
+    private TableColumn<Tree, Boolean> tableColSick;
+    @FXML
+    private TableColumn<Tree, TreeFamily> tableColFamily;
 
     private ParkDAO database;
     private PopUpView popUp;
@@ -47,6 +60,16 @@ public class MainController {
 
         database = new TempParkDAO();
         popUp = new PopUpView();
+
+        //hier wird den Spalten der Tabelle "gesagt" welche Eigenschaft der Klasse Tree
+        //sie abbilden
+        tableColId.setCellValueFactory( new PropertyValueFactory<>( "treeId") );
+        tableColName.setCellValueFactory( new PropertyValueFactory<>( "name") );
+        tableColAge.setCellValueFactory( new PropertyValueFactory<>( "age") );
+        tableColSick.setCellValueFactory( new PropertyValueFactory<>( "sick") );
+        tableColFamily.setCellValueFactory( new PropertyValueFactory<>( "treeFamily") );
+
+
 
 
     }

@@ -2,6 +2,7 @@ package controller;
 
 import dao.ParkDAO;
 import dao.TempParkDAO;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -148,7 +149,17 @@ public class MainController {
     @FXML
     protected void onClickListPark(){
 
+        //TreeList des Parks holen
+        int parkId = getCurrentParkId();
+        ObservableList<Tree> treeList = database.getAllTreesByParkId( parkId );
+        updateTableView(treeList);
     }
+
+    private void updateTableView( ObservableList<Tree> treeList ){
+        parkTableView.setItems(treeList);
+        parkTableView.refresh();
+    }
+
 
     /**
      * Wird aufgerufen wenn der Button "Park löschen" gedrückt wird

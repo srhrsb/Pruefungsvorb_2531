@@ -8,5 +8,8 @@ module com.brh.pruefungsvorb_2531 {
 
     opens com.brh.pruefungsvorb_2531 to javafx.fxml;
     opens controller to javafx.fxml;
+    opens model to javafx.fxml;
+
     exports com.brh.pruefungsvorb_2531;
+    exports model;
 }
